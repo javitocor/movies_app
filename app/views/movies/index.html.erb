@@ -1,0 +1,10 @@
+<h1>Welcome to the movies database</h1>
+<h4>Here you can find all the movies</h4>
+
+<ul>
+<% @movies.each do |movie| %>
+    <li><p><%= link_to movie.title, movie_path(movie) %>, <%= movie.year %></p></li>
+<% end %>
+</ul>
+
+<%= link_to "Add a movie", new_path %>
