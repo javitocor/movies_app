@@ -9,12 +9,13 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find(params[:id])
-    @movie.save
-    redirect_to movie_path(@movie)
   end
 
   def create
-    @movie = Movie.create(:title => params[:movie][:title], :year=> params[:movie][:year], :description=> params[:movie][:description])
+    @movie = Movie.create(movie_params)
+
+    flash.notice = 'Movie created!'
+
     redirect_to root_path
   end
 
@@ -23,9 +24,26 @@ class MoviesController < ApplicationController
   end
 
   def update
+    @movie = Movie.find(params[:id])
+    @movie.update(movie_params)
+
+    flash.notice = 'Movie updated!'
+
+    redirect_to movie_path(@movie)
   end
 
   def destroy
+    @movie = Movie.find(params[:id])
+    @movie.delete
+
+    flash.notice = 'Movie deleted!'
+
+    redirect_to root_path
+  end
+
+  private
+  def movie_params
+    params.require(:movie).permit(:title, :year, :description)
   end
 end
 
