@@ -3,6 +3,8 @@
 <p>This movie was released on <%= @movie.year %></p>
 <p><%= @movie.description %></p>
 
+<%= render partial: 'reviews/form' %>
+
 <%= link_to 'Edit', edit_movie_path %> | <%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
