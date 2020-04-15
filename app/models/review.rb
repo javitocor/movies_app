@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-    belongs_to :movies
+    belongs_to :movie
 end

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/edit/:id', to: 'movies#edit'
   
   resources :movies
+  resources :reviews
 end
