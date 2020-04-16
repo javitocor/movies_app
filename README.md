@@ -21,7 +21,7 @@ A movies website and database, allows the user to add movies, reviews, pictures,
 - Open http://localhost:3000/ on your browser
 
 # Getting Started
-- Add, update or delete movies and its microposts following the links
+- Add, update or delete movies and review them or add pictures , ratings and tags.
 
 ## Authors
 
