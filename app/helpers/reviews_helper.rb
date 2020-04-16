@@ -1,17 +1,14 @@
 module ReviewsHelper
-    def total_rating(id)
-        reviews = Review.all 
-        total = []
-        reviews.each do |x|
-            if x[:movie_id] == id
-                total.push(x[:rating])
-            end
-        end
-        if total != nil && total != []
-            aver = (total.reduce(:+) / total.size).round(1)
-        else
-            p 'No rating yet'
-        end   
+	def total_rating(id)
+    reviews = Review.select(:rating).where(movie_id: id)
+    return render html: 'No rating yet' if reviews.empty?
+
+		total = []
+		reviews.each do |x|
+      total << x[:rating]
     end
+    avg = (total.sum / total.count).round(1)
+    render html: "User's rating: #{avg}"
+  end
 end
 
