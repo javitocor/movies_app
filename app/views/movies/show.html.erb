@@ -3,8 +3,6 @@
 <p>This movie was released on <%= @movie.year %></p>
 <% if @movie.image.attached? %>
   <p>
-    <strong>Image:</strong>
-    <br>
     <%= image_tag @movie.image %>
   </p>
 <% end %>
