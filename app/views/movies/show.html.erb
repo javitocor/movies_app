@@ -2,12 +2,15 @@
 <h2>User's Rating <%= total_rating(@movie.id) %></h2>
 <p>This movie was released on <%= @movie.year %></p>
 <p><%= @movie.description %></p>
+<p><% if @movie.image.exists? %>
+<%= image_tag @movie.image.url(:medium) %>
+<% end %></p>
 
+<h3>Add your review</h3>
 <%= render partial: 'reviews/form' %>
 <%= render partial: 'reviews/display' %>
 
 
 <%= link_to 'Edit', edit_movie_path %> | <%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?' } %>
-
 <br>
 <%= link_to '<< Back to the list of movies', root_path %>
