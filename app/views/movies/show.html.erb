@@ -1,6 +1,13 @@
 <h1><%= @movie.title %></h1>
 <h2>User's Rating <%= total_rating(@movie.id) %></h2>
 <p>This movie was released on <%= @movie.year %></p>
+<% if @movie.image.attached? %>
+  <p>
+    <strong>Image:</strong>
+    <br>
+    <%= image_tag @movie.image %>
+  </p>
+<% end %>
 <p><%= @movie.description %></p>
 
 <h3>Add your review</h3>
