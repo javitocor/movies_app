@@ -1,13 +1,23 @@
 <h1><%= @movie.title %></h1>
-<h2><%= total_rating(@movie.id) %></h2>
-<p>This movie was released on <%= @movie.year %></p>
-<% if @movie.images.attached? %>
+
 <p>
-  <% @movie.images.each do |image| %>
-    <%= image_tag(image) %>
+  <% @movie.tags.each do |tag| %>
+    <span> <%= link_to tag.name, tag_path(tag) %> </span>
   <% end %>
 </p>
+
+<h2><%= total_rating(@movie.id) %></h2>
+
+<p>This movie was released on <%= @movie.year %></p>
+
+<% if @movie.images.attached? %>
+  <p>
+    <% @movie.images.each do |image| %>
+      <%= image_tag(image, :style => "height: 250px; width: 500px") %>
+    <% end %>
+  </p>
 <% end %>
+
 <p><%= @movie.description %></p>
 
 <h3>Add your review</h3>

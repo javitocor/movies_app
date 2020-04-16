@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_085240) do
+ActiveRecord::Schema.define(version: 2020_04_16_104059) do
+
+  create_table "Movies_Tags", id: false, force: :cascade do |t|
+    t.integer "Movie_id", null: false
+    t.integer "Tag_id", null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
