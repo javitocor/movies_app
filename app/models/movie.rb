@@ -5,4 +5,5 @@ class Movie < ApplicationRecord
   has_many :reviews
   has_many_attached :images
   scope :with_eager_loaded_images, -> { eager_load(images_attachments: :blob) }
+  has_and_belongs_to_many :tags
 end
