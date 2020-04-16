@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @review = Review.new
+    
   end
 
   def edit
@@ -13,7 +14,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.create(movie_params)  
+    @movie = Movie.create(movie_params)
     if @movie.save
       flash.notice = "Movie '#{@movie.title}' Created!" 
       redirect_to root_path
@@ -47,7 +48,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:title, :year, :description, :image)
+    params.require(:movie).permit(:title, :year, :description, images: [])
   end
 end
 

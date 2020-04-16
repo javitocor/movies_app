@@ -17,8 +17,8 @@
     <%= f.text_area :description %>
   </p>
   <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :images %>
+    <%= f.file_field :images , multiple: true %>
   </div>
   <p>
     <%= f.submit %>

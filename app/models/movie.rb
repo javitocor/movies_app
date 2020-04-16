@@ -3,5 +3,6 @@ class Movie < ApplicationRecord
   validates :description, presence: true, length: {maximum: 200}
   validates :year, presence: true, length: {maximum: 4}, numericality: { only_integer: true, greater_than: 1900 }
   has_many :reviews
-  has_one_attached :image
+  has_many_attached :images
+  scope :with_eager_loaded_images, -> { eager_load(images_attachments: :blob) }
 end
