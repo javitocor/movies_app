@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_104059) do
-
-  create_table "Movies_Tags", id: false, force: :cascade do |t|
-    t.integer "Movie_id", null: false
-    t.integer "Tag_id", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_04_16_131857) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +39,13 @@ ActiveRecord::Schema.define(version: 2020_04_16_104059) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "movies_tags", id: false, force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["movie_id"], name: "index_movies_tags_on_movie_id"
+    t.index ["tag_id"], name: "index_movies_tags_on_tag_id"
   end
 
   create_table "reviews", force: :cascade do |t|

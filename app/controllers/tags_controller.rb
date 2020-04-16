@@ -6,13 +6,19 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
   end
-
-  def create
-  end
-
-  def new
-  end
-
+  
   def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    flash.notice = "Tag '#{@tag.name}' Deleted!"
+    redirect_to tags_path
   end
+
+  private
+  def tag_params
+    params.require(:tag).permit(:name)
+  end
+
 end
+
+
