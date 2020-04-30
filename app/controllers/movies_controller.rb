@@ -16,11 +16,11 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     if @movie.save
-      flash.notice = "Movie '#{@movie.title}' Created!" 
+      flash[:success] = "Movie '#{@movie.title}' Created!" 
       redirect_to root_path
     else
       render :new
-      flash.notice = "#{@movie.errors}"
+      flash[:danger] = "#{@movie.errors}"
     end
   end
 
@@ -32,18 +32,29 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
-      flash.notice = "Movie '#{@movie.title}' Updated!"  
+      flash[:success] = "Movie '#{@movie.title}' Updated!"  
     else
       render :edit 
-      flash.notice = "#{@movie.errors}"
+      flash[:danger] = "#{@movie.errors}"
     end
   end
 
   def destroy
     @movie = Movie.find(params[:id])
     @movie.delete
-    flash.notice = "Movie '#{@movie.title}' Deleted!"  
+    flash[:success] = "Movie '#{@movie.title}' Deleted!"  
     redirect_to root_path
+  end
+
+  def searcher
+    @movie = Movie.find_by(title: params[:search])
+
+    if @movie
+      redirect_to @movie
+    else      
+      flash[:danger] = "Movie not found, but you can add it!!"
+      redirect_to root_path
+    end
   end
 
   private

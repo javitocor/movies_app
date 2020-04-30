@@ -1,30 +1,38 @@
-<h1><%= @movie.title %></h1>
-
-<p>
-  <% @movie.tags.each do |tag| %>
-    <span> <%= link_to tag.name, tag_path(tag) %> </span>
-  <% end %>
-</p>
-
-<h2><%= total_rating(@movie.id) %></h2>
-
-<p>This movie was released on <%= @movie.year %></p>
-
-<% if @movie.images.attached? %>
-  <p>
-    <% @movie.images.each do |image| %>
-      <%= image_tag(image, resize_to_limit: [100, 100]) %>
-    <% end %>
-  </p>
-<% end %>
-
-<p><%= @movie.description %></p>
-
-<h3>Add your review</h3>
-<%= render partial: 'reviews/form' %>
-<%= render partial: 'reviews/display' %>
-
-
-<%= link_to 'Edit', edit_movie_path %> | <%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="container">
+<div class="container d-flex justify-content-center mt-4">
+  <div class="card" style="width: 18rem;">
+    <h2 class="card-title"><%= @movie.title %></h2>
+      <p>
+        <% @movie.tags.each do |tag| %>
+          <span> <%= link_to tag.name, tag_path(tag) %> </span>
+        <% end %>
+      </p>
+      <% if @movie.images.attached? %>
+        <%= image_tag(@movie.images.first, resize_to_limit: [100, 100], class:"card-img-top", alt:"#{@movie.title}") %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-text"><%= total_rating(@movie.id) %></h5>
+        <p class="card-text">This movie was released on <%= @movie.year %></p>    
+        <p class="card-text"><%= @movie.description %></p>
+      </div>
+  </div>  
+</div>
+<div class="container">
+  <div class="row text-center text-lg-left">
+    <% if @movie.images.attached? %>
+    <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-start">
+      <% @movie.images.each do |image| %>
+        <div class="">
+          <%= image_tag(image, resize_to_limit: [5, 5], class:"img-fluid img-thumbnail") %>
+        </div>
+      <% end %>    
+    <% end %>      
+    </div>
+  </div>
+</div>
+<div class="mt-3"><%= render partial: 'reviews/display' %></div>
+<button type="button" class="btn btn-outline-primary"><%= link_to 'Edit', edit_movie_path %></button>
+<button type="button" class="btn btn-outline-primary"><%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?' } %></button>
 <br>
-<%= link_to '<< Back to the list of movies', root_path %>
+<button type="button" class="btn btn-outline-primary"><%= link_to '<< Back to the list of movies', root_path %></button>
+</div>

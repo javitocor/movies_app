@@ -1,5 +1,34 @@
-<h1>Reviews <%= @movie.reviews.count %></h1>
-<% @movie.reviews.each do |review| %>
-    <p>Review by: <%= review.author %> | Rating: <%= review.rating.to_i %></p>   
-    <p><%= review.review %></p>
-<% end %>
+<div class="row bootstrap snippets d-flex justify-content-center mt-2 w-100">
+    <div class="col-md-6 col-md-offset-2 col-sm-12">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Review panel
+                </div>
+                <div class="panel-body">
+                    <%= render 'reviews/form' %>
+                    <div class="panel-heading">
+                        This movie has 
+                        <%= @movie.reviews.count %>
+                        reviews
+                    </div>                    
+                    <ul class="media-list">
+                    <% @movie.reviews.each do |review| %>
+                        <li class="media">
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted"><%= review.created_at %></small>
+                                </span>
+                                <strong class="text-success"><%= review.author %> | Rating: <%= review.rating.to_i %></strong>
+                                <p>
+                                    <%= review.review %>.
+                                </p>
+                            </div>
+                        </li>
+                    <% end %>                            
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
