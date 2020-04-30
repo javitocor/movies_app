@@ -1,9 +1,17 @@
-<h1><%= @tag.name %> Genre Movies</h1>
-
-<ul>
-  <% @tag.movies.each do |movie| %>
-    <li> <%= link_to movie.title, movie_path(movie) %> </li>
-  <% end %>
-</ul>
-
-<%= link_to '<< Back to tags list', tags_path %>
+<div class="container">
+<div class="row">
+<div class="col-sm-8">
+	<!-- Category -->
+	<div class="single category">
+		<h1 class="side-title"><%= @tag.name %> Genre Movies</h1>
+		<ul class="list-unstyled">
+      <% @tag.movies.each do |movie| %>
+			<li><%= link_to movie.title, movie_path(movie) %></li>
+      <% end %>
+		</ul>
+   </div>
+   <br>
+   <button type="button" class="btn btn-outline-primary"><%= link_to '<< Back to tags list', tags_path %></button>
+</div> 
+</div>
+</div>

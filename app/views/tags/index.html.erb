@@ -1,12 +1,17 @@
-<h1>All Tags</h1>
-
-<ul>
-  <% @tags.each do |tag| %>
-    <li>
-      <%= link_to tag.name, tag_path(tag) %>
-      <%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Really delete the tag?"} %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to '<< Show all movies', root_path %>
+<div class="container">
+<div class="row">
+<div class="col-sm-8">
+	<!-- Category -->
+	<div class="single category">
+		<h1 class="side-title">All Tags</h1>
+		<ul class="list-unstyled">
+      <% @tags.each do |tag| %>
+			<li><%= link_to tag.name, tag_path(tag) %><span class="float-right"><%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Really delete the tag?"} %></span></li>
+      <% end %>
+		</ul>
+   </div>
+   <br>
+   <button type="button" class="btn btn-outline-primary"><%= link_to '<< Show all movies', root_path %></button>
+</div> 
+</div>
+</div>
