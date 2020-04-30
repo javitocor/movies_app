@@ -1,30 +1,34 @@
-<%= form_for(@movie) do |f| %>
+<%= form_for @movie, html: {class: 'w-50'} do |f| %>
   <ul>
   <% @movie.errors.full_messages.each do |error| %>
     <li><%= error %></li>
   <% end %>
   </ul>
-  <p>
+  <div class="form-group">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :year %><br />
-    <%= f.text_field :year %>
-  </p>
-  <p>
-    <%= f.label :tag_list %><br />
-    <%= f.text_field :tag_list %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <div>
-    <%= f.label :images %>
-    <%= f.file_field :images , multiple: true %>
+    <%= f.text_field :title, class:"form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label :year %><br />
+    <%= f.text_field :year, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+  <div class="input-group">
+      <span class="input-group-btn">
+        <span class="btn btn-small btn-outline-primary btn-inverse" onclick="$(this).parent().find('input[type=file]').click();">Add New Image</span>
+        <%= f.file_field :avatar, onchange: "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", style: "display: none;" %>
+      </span>
+  </div>
+  <br>
   <p>
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-primary" %>
   </p>
 <% end %>
+

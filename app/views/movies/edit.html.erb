@@ -1,7 +1,12 @@
 <% provide(:title, "Edit Movie") %>
+<div class="container text-center">
+<div>
 <h1>Edit movie <%= @movie.title %></h1>
 <h4>Here you can edit all the movies</h4>
+</div>
+<div class="justify-content-center d-flex"><%= render partial: 'form' %></div>
 
-<%= render partial: 'form' %>
+<button type="button" class="btn btn-outline-primary"><%= link_to "<< Back to the movie", movie_path(@movie) %></button>
+</div>
 
-<%= link_to "<< Back to the movie", movie_path(@movie) %>
+

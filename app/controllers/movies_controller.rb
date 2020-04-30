@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
   end
 
   def searcher
-    @movie = Movie.find_by(title: params[:search])
+    @movie = Movie.ci_find("title", params[:search])
 
     if @movie
       redirect_to @movie

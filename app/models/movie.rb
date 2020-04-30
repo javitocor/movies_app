@@ -6,6 +6,7 @@ class Movie < ApplicationRecord
   has_many_attached :images
   scope :with_eager_loaded_images, -> { eager_load(images_attachments: :blob) }
   has_and_belongs_to_many :tags
+  scope :ci_find, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
   def tag_list
     self.tags.collect do |tag|
     tag.name

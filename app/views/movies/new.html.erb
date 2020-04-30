@@ -1,8 +1,10 @@
-<% provide(:title, "New Movie") %>
+<% provide(:title, "Create Movie") %>
+<div class="container text-center">
+<div>
 <h1>Add a new movie</h1>
 <h4>Add the movie of your choice adding the name, year and a brief description</h4>
+</div>
+<div class="justify-content-center d-flex"><%= render partial: 'form' %></div>
 
-
-<%= render partial: 'form' %>
-
-<%= link_to "<< Back to the main list", root_path %>
+<button type="button" class="btn btn-outline-primary"><%= link_to "<< Back to the main list", root_path %></button>
+</div>
