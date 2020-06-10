@@ -1,6 +1,8 @@
 # Movies_App
 Application built up with Ruby on Rails from scratch.
 
+![screenshot](/app/assets/images/screenshot1.png) ![screenshot](/app/assets/images/screenshot2.png) ![screenshot](/app/assets/images/screenshot3.png) ![screenshot](/app/assets/images/screenshot4.png)
+
 # What it Does
 A movies website and database, allows the user to add movies, reviews, pictures, ratings and tags.
 
