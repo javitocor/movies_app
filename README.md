@@ -9,6 +9,7 @@ A movies website and database, allows the user to add movies, reviews, pictures,
 # Built With
 - Ruby
 - Ruby on Rails
+- Bootstrap
 - VSCode
 
 # Prerequisites
